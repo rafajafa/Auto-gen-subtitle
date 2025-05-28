@@ -51,7 +51,10 @@ python src/main.py input_video.mp4 --output_path output_video.mp4 --model large 
 ### Command Line Arguments
 
 - `input_video`: Path to the input video file
-- `output_video`: Path where the output video will be saved (optional, will output to the same directory as input video if not specified)
+- `output_video`: Path where the output video will be saved (optional, will output to the same 
+directory as input video if not specified)
+- `font-file`: Path where the font file located (optional, will use default font (arial) if not specified)
 - `--model`: Whisper model size (tiny, base, small, medium, large) - default: base
 - `--language`: Language of the video (optional, will auto-detect if not specified)
+
 
