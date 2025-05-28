@@ -19,7 +19,8 @@ class VideoSubtitleApp:
         input_video_path: str,
         output_video_path: Optional[str],
         model_size: str = "base",
-        language: Optional[str] = None
+        language: Optional[str] = None,
+        font_file: Optional[str] = None
     ) -> bool:
         """
         Process a video file to add subtitles.
@@ -34,6 +35,8 @@ class VideoSubtitleApp:
             bool: True if processing was successful, False otherwise
         """
         audio_path = None  # Initialize audio_path to None for cleanup
+        default_font_file = os.path.join(os.getcwd(), 'ARIAL.TTF')
+        font_file = font_file or default_font_file
         try:
             # Validate input paths
             if not os.path.exists(input_video_path):
@@ -72,7 +75,8 @@ class VideoSubtitleApp:
             self.video_processor.add_subtitles(
                 input_video_path,
                 output_video_path,
-                subtitles
+                subtitles,
+                font_file
             )
             
             # Remove temporary files
@@ -94,6 +98,7 @@ def main():
         )
     parser.add_argument("input_video", help="Path to input video file")
     parser.add_argument("--output_video", help="Path to output video file")
+    parser.add_argument("--font_file", help="Path to font file (.TTF format) for subtitles (optional, will use default if not provided)")
     parser.add_argument("--model", 
                         default="base", 
                         choices=["tiny", "base", "small", "medium", "large"],
@@ -107,8 +112,9 @@ def main():
     success = app.process_video(
         args.input_video,
         args.output_video,
-        model_size=args.model,
-        language=args.language
+        model_size = args.model,
+        language = args.language,
+        font_file = args.font_file
     )
     
     if not success:

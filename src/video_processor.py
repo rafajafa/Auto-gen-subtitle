@@ -40,7 +40,8 @@ class VideoProcessor:
         self,
         input_video_path: str,
         output_video_path: str,
-        subtitles: List[Tuple[Tuple[float, float], str]]
+        subtitles: List[Tuple[Tuple[float, float], str]],
+        font_file_path: str
     ) -> None:
         """
         Add subtitles to video and save the result.
@@ -55,7 +56,7 @@ class VideoProcessor:
         video_width, video_height = video.size
         
         # Try to find font file in current directory or system fonts
-        font_file_path = os.path.join(os.getcwd(), 'ARIAL.TTF')
+        # font_file_path = os.path.join(os.getcwd(), 'ARIAL.TTF')
         if not os.path.exists(font_file_path):
             # return error if font file not found
             raise FileNotFoundError(f"Font file not found at {font_file_path}. Please ensure the font file is present.")
