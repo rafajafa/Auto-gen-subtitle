@@ -45,7 +45,7 @@ python src/main.py input_video.mp4
 
 Advanced options:
 ```bash
-python src/main.py input_video.mp4 --output_path output_video.mp4 --model large --language en
+python src/main.py input_video.mp4 --output_path output_video.mp4 --font_file_path ARIAL.TTF --model large --language en
 ```
 
 ### Command Line Arguments
